@@ -44,7 +44,7 @@ git push origin master
 
 # 部署到服务器
 echo -e "${GREEN}部署到服务器...${NC}"
-ssh -i lynxblogkey.pem ubuntu@3.91.247.126 << 'EOF'
+ssh -i lynxblogkey.pem ubuntu@52.90.7.160 << 'EOF'
     cd /var/www/lynx-blog
     
     # 拉取最新代码
