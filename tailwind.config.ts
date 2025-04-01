@@ -40,6 +40,38 @@ const config: Config = {
       boxShadow: {
         'soft': '0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 10px 20px -2px rgba(0, 0, 0, 0.04)',
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: '#374151',
+            a: {
+              color: '#4F46E5',
+              '&:hover': {
+                color: '#4338CA',
+              },
+            },
+            h1: {
+              color: '#111827',
+            },
+            h2: {
+              color: '#111827',
+            },
+            h3: {
+              color: '#111827',
+            },
+            h4: {
+              color: '#111827',
+            },
+            strong: {
+              color: '#111827',
+            },
+            code: {
+              color: '#111827',
+            },
+          },
+        },
+      },
     },
   },
   plugins: [

@@ -1,49 +1,56 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import Tag from '@/components/Tag'
-import { posts } from '@/data/posts'
+import { getAllPosts } from '@/lib/posts'
 
-export default function Home() {
+export default function HomePage() {
+  const posts = getAllPosts()
+
   return (
-    <div className="container mx-auto px-4 py-16">
-      <header className="mb-20 text-center">
-        <h1 className="text-5xl font-display font-bold mb-6">Lynx Blog</h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          A modern and minimalist blog exploring the intersection of art, design, and technology.
-        </p>
-      </header>
-
-      <section className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
-          <article key={post.id} className="bg-white rounded-xl shadow-soft overflow-hidden hover:shadow-lg transition-shadow">
-            <div className="aspect-video relative bg-gray-100">
-              {/* Placeholder for featured image */}
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10" />
-            </div>
-            <div className="p-8">
-              <div className="text-sm text-accent mb-2">{post.date}</div>
-              <h2 className="text-2xl font-display font-bold mb-4">{post.title}</h2>
-              <p className="text-gray-600 mb-6">
-                {post.excerpt}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-6">
-                {post.tags.map((tag) => (
-                  <Tag key={tag} tag={tag} href={`/tags/${tag}`} />
-                ))}
+    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+      <div className="max-w-4xl mx-auto px-4 py-12">
+        <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
+          Welcome to My Blog
+        </h1>
+        <div className="grid gap-8">
+          {posts.map((post) => (
+            <article
+              key={post.id}
+              className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-300"
+            >
+              {post.image && (
+                <div className="relative h-48">
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-purple-500/20" />
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
+              <div className="p-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                  <Link href={`/posts/${post.id}`} className="hover:text-indigo-600 transition-colors">
+                    {post.title}
+                  </Link>
+                </h2>
+                <div className="text-gray-500 mb-4">{post.date}</div>
+                <p className="text-gray-700 mb-4">{post.excerpt}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {post.tags.map((tag) => (
+                    <Tag key={tag} tag={tag} href={`/tags/${tag}`} />
+                  ))}
+                </div>
+                <Link
+                  href={`/posts/${post.id}`}
+                  className="inline-block text-indigo-600 hover:text-indigo-700 font-medium"
+                >
+                  Read more →
+                </Link>
               </div>
-              <Link 
-                href={`/posts/${post.id}`} 
-                className="inline-flex items-center text-accent hover:text-primary transition-colors"
-              >
-                Read more
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-          </article>
-        ))}
-      </section>
-    </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </main>
   )
 } 
