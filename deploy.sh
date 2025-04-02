@@ -82,7 +82,7 @@ git push origin master || {
 # 服务器信息
 SSH_KEY="lynxblogkey.pem"
 SERVER_USER="ubuntu"
-SERVER_IP="52.90.7.160"
+SERVER_IP="52.70.167.235"
 PROJECT_DIR="/var/www/lynx-blog"
 
 echo -e "${GREEN}部署到服务器 ($SERVER_IP)...${NC}"
