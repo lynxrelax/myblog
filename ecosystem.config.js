@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'lynx-blog',
-      script: 'npm',
+      script: 'node_modules/next/dist/bin/next',
       args: 'start',
       cwd: '/var/www/lynx-blog',
       env: {
