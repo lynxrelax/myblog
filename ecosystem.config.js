@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'lynx-blog',
-      script: 'npm',
+      script: '/var/www/lynx-blog/node_modules/.bin/next',
       args: 'start',
       env: {
         NODE_ENV: 'production',
