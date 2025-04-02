@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# 检查是否有 --force 参数
+FORCE=false
+if [ "$1" = "--force" ]; then
+  FORCE=true
+fi
+
 # 设置错误时退出
 set -e
 
@@ -26,11 +32,24 @@ npm install
 
 # 清理构建文件
 echo -e "${GREEN}清理构建文件...${NC}"
-rm -rf .next
+if [ "$FORCE" = true ]; then
+  # 完全清理
+  rm -rf .next
+  rm -rf node_modules/.cache
+else
+  # 只清理页面缓存
+  rm -rf .next/cache
+fi
 
 # 构建项目
 echo -e "${GREEN}构建项目...${NC}"
-npm run build
+if [ "$FORCE" = true ]; then
+  # 完全构建
+  npm run build
+else
+  # 增量构建
+  NEXT_TELEMETRY_DISABLED=1 npm run build
+fi
 
 # 检查构建是否成功
 if [ ! -f ".next/BUILD_ID" ]; then
@@ -54,7 +73,12 @@ ssh -i lynxblogkey.pem ubuntu@52.90.7.160 << 'EOF'
     npm install
     
     # 清理构建文件
-    rm -rf .next
+    if [ "$FORCE" = true ]; then
+      rm -rf .next
+      rm -rf node_modules/.cache
+    else
+      rm -rf .next/cache
+    fi
     
     # 构建项目
     npm run build
