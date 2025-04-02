@@ -3,9 +3,10 @@ import Tag from '@/components/Tag'
 import { getPostById } from '@/lib/posts'
 import { notFound } from 'next/navigation'
 import Markdown from '@/components/Markdown'
+import TableOfContents from '@/components/TableOfContents'
 
-export default function PostPage({ params }: { params: { id: string } }) {
-  const post = getPostById(params.id)
+export default async function PostPage({ params }: { params: { id: string } }) {
+  const post = await getPostById(params.id)
 
   if (!post) {
     notFound()
@@ -37,6 +38,7 @@ export default function PostPage({ params }: { params: { id: string } }) {
                 ))}
               </div>
             </header>
+            <TableOfContents content={post.content} />
             <div className="prose prose-lg max-w-none">
               <Markdown content={post.content} />
             </div>

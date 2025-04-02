@@ -7,8 +7,18 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
 
 export const metadata: Metadata = {
-  title: 'Lynx Blog',
-  description: 'A modern and minimalist blog',
+  title: 'Lynxrelax',
+  description: 'A personal blog about technology, life, and everything in between.',
+  icons: {
+    icon: [
+      { url: '/images/lynx-icon.ico' },
+      { url: '/images/lynx-icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/images/lynx-icon.ico' },
+      { url: '/images/lynx-icon.svg', type: 'image/svg+xml' },
+    ],
+  },
 }
 
 export default function RootLayout({
@@ -26,4 +36,4 @@ export default function RootLayout({
       </body>
     </html>
   )
-} 
+}

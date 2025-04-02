@@ -9,7 +9,7 @@ export default function HomePage() {
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-          Welcome to My Blog
+          Ad Astra Abyssosque
         </h1>
         <div className="grid gap-8">
           {posts.map((post) => (

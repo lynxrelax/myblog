@@ -6,7 +6,7 @@ export default function Navigation() {
       <div className="container mx-auto px-4 py-6">
         <div className="flex justify-between items-center">
           <Link href="/" className="text-2xl font-display font-bold text-primary hover:text-accent transition-colors">
-            Lynx
+            Lynxrelax
           </Link>
           <div className="space-x-8">
             <Link href="/" className="text-gray-600 hover:text-accent transition-colors">
