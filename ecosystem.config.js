@@ -2,8 +2,9 @@ module.exports = {
   apps: [
     {
       name: 'lynx-blog',
-      script: '/var/www/lynx-blog/node_modules/.bin/next',
+      script: 'npm',
       args: 'start',
+      cwd: '/var/www/lynx-blog',
       env: {
         NODE_ENV: 'production',
         PORT: 3000,
